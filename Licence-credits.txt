@@ -1,0 +1,22 @@
+Australian Accounting and Accent AI Template
+Created by: Sunil Karki
+Version: 1.0
+
+Asset Credits:
+- Fonts: Google Fonts (Open Sans, Roboto) - Licensed for commercial use
+- Icons: Font Awesome Free - https://fontawesome.com/license/free
+- Images: Created or licensed; replace with your own assets if needed
+
+Licensing:
+- This template is fully self-contained and does not include external dependencies requiring licensing.
+- Use and modify freely for commercial projects.
+- Proper attribution required for third-party assets.
+
+Notes:
+- Always verify asset licenses before distribution.
+- For custom fonts or icons added later, ensure proper license compliance.
+
+Contact:
+- For support or licensing questions, contact [your contact info].
+
+Enjoy customizing your website!

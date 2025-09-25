@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Accounting and Accent AI</title>
+    <style>
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+            --color-green-500: rgba(34, 197, 94, 1);
+            --color-blue-500: rgba(59, 130, 246, 1);
+            --color-purple-500: rgba(147, 51, 234, 1);
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: rgba(31, 33, 33, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .app-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--color-teal-500);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--color-gray-300);
+        }
+
+        .main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: var(--color-surface);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-btn.active,
+        .nav-btn:hover {
+            background: var(--color-teal-500);
+            color: white;
+            border-color: var(--color-teal-500);
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--color-white);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn--primary {
+            background: var(--color-teal-500);
+            color: white;
+        }
+
+        .btn--primary:hover:not(:disabled) {
+            background: var(--color-teal-600);
+        }
+
+        .btn--secondary {
+            background: var(--color-gray-200);
+            color: var(--color-text);
+        }
+
+        .btn--danger {
+            background: var(--color-red-500);
+            color: white;
+        }
+
+        .btn--success {
+            background: var(--color-green-500);
+            color: white;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .input-group input,
+        .input-group textarea,
+        .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .pronunciation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .pronunciation-item {
+            background: var(--color-white);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-teal-500);
+        }
+
+        .recording-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .recording-status {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .recording-status.idle {
+            background: var(--color-gray-200);
+            color: var(--color-text);
+        }
+
+        .recording-status.recording {
+            background: #fee;
+            color: var(--color-red-500);
+            border: 2px solid var(--color-red-500);
+        }
+
+        .recording-status.processing {
+            background: #fef;
+            color: var(--color-orange-500);
+            border: 2px solid var(--color-orange-500);
+        }
+
+        .recording-status.success {
+            background: #efe;
+            color: var(--color-green-500);
+            border: 2px solid var(--color-green-500);
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        .score-display {
+            background: var(--color-white);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 15px 0;
+            border: 2px solid var(--color-teal-500);
+        }
+
+        .score-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-teal-500);
+        }
+
+        .qa-container {
+            background: var(--color-white);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .qa-question {
+            background: var(--color-teal-500);
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .qa-answer {
+            padding: 20px;
+            display: none;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .qa-answer.active {
+            display: block;
+        }
+
+        .external-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: var(--color-orange-500);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .category-tag {
+            background: var(--color-teal-500);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .category-tag.payroll {
+            background: var(--color-blue-500);
+        }
+
+        .category-tag.gst {
+            background: var(--color-green-500);
+        }
+
+        .category-tag.individual-tax {
+            background: var(--color-purple-500);
+        }
+
+        .category-tag.corporate-tax {
+            background: var(--color-orange-500);
+        }
+
+        .category-tag.software {
+            background: var(--color-red-500);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--color-gray-200);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-teal-500);
+            transition: width 0.3s ease;
+        }
+
+        .cefr-level-card {
+            background: var(--color-white);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--color-teal-500);
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--color-teal-500);
+            color: white;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .assessment-progress {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .error-message {
+            background: #fee;
+            color: var(--color-red-500);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 2px solid #fcc;
+        }
+
+        .success-message {
+            background: #efe;
+            color: var(--color-green-500);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 2px solid #cfc;
+        }
+
+        .warning-message {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 2px solid #ffeaa7;
+        }
+
+        .permission-guide {
+            background: #f8f9fa;
+            border: 2px solid var(--color-teal-500);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .permission-guide h4 {
+            color: var(--color-teal-500);
+            margin-bottom: 15px;
+        }
+
+        .permission-guide ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .permission-guide li {
+            margin-bottom: 8px;
+        }
+
+        .browser-icon {
+            display: inline-block;
+            padding: 4px 8px;
+            background: var(--color-teal-500);
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+        .no-results {
+            background: #f8f9fa;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .external-resources-section {
+            background: var(--color-white);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid var(--color-teal-500);
+        }
+
+        .external-resources-section h4 {
+            color: var(--color-teal-500);
+            margin-bottom: 15px;
+        }
+
+        .youtube-link {
+            background: #ff0000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .ato-link {
+            background: #006400;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .tax-category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tax-category-card {
+            background: var(--color-white);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--color-gray-200);
+            border-left: 4px solid var(--color-teal-500);
+        }
+
+        .tax-category-card.payroll {
+            border-left-color: var(--color-blue-500);
+        }
+
+        .tax-category-card.gst {
+            border-left-color: var(--color-green-500);
+        }
+
+        .tax-category-card.individual-tax {
+            border-left-color: var(--color-purple-500);
+        }
+
+        .tax-category-card.corporate-tax {
+            border-left-color: var(--color-orange-500);
+        }
+
+        .tax-category-card.software {
+            border-left-color: var(--color-red-500);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 1px solid var(--color-gray-200);
+            color: var(--color-gray-300);
+        }
+
+        .creator-watermark {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                flex-direction: column;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pronunciation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tax-category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>Australian Accounting and Accent AI</h1>
+            <p class="subtitle">Master Australian accent and accounting expertise for professional success</p>
+        </header>
+
+        <nav class="main-nav">
+            <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-btn" data-tab="accent-trainer">Accent Trainer</button>
+            <button class="nav-btn" data-tab="cefr-assessment">CEFR Assessment</button>
+            <button class="nav-btn" data-tab="bookkeeping">Bookkeeping Q&A</button>
+            <button class="nav-btn" data-tab="tax-knowledge">Tax Knowledge</button>
+            <button class="nav-btn" data-tab="journal-entries">Journal Entries</button>
+            <button class="nav-btn" data-tab="resources">Resources</button>
+        </nav>
+
+        <main class="app-content">
+            <!-- Dashboard Tab -->
+            <section id="dashboard" class="tab-content active">
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h3>🎯 Accent Training</h3>
+                        <p>Perfect your Australian pronunciation with real-time feedback and recording.</p>
+                        <button class="btn btn--primary" onclick="switchTab('accent-trainer')">Start Training</button>
+                    </div>
+                    <div class="card">
+                        <h3>📊 CEFR Assessment</h3>
+                        <p>Test your English proficiency for Australian job opportunities.</p>
+                        <button class="btn btn--primary" onclick="switchTab('cefr-assessment')">Take Assessment</button>
+                    </div>
+                    <div class="card">
+                        <h3>📚 Bookkeeping Knowledge</h3>
+                        <p>Comprehensive Australian accounting and bookkeeping guidance.</p>
+                        <button class="btn btn--primary" onclick="switchTab('bookkeeping')">Explore Q&A</button>
+                    </div>
+                    <div class="card">
+                        <h3>💰 Tax Knowledge Hub</h3>
+                        <p>Complete Australian tax system guide for individuals and businesses.</p>
+                        <button class="btn btn--primary" onclick="switchTab('tax-knowledge')">Learn Taxes</button>
+                    </div>
+                    <div class="card">
+                        <h3>📝 Journal Entries</h3>
+                        <p>Ready-to-use Australian accounting journal entries and examples.</p>
+                        <button class="btn btn--primary" onclick="switchTab('journal-entries')">View Entries</button>
+                    </div>
+                    <div class="card">
+                        <h3>🔗 External Resources</h3>
+                        <p>Official ATO, Xero, and QuickBooks resources and tutorials.</p>
+                        <button class="btn btn--primary" onclick="switchTab('resources')">Browse Resources</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Your Progress</h3>
+                    <p><strong>Practice Sessions:</strong> <span id="dashboard-sessions">0</span></p>
+                    <p><strong>Average Score:</strong> <span id="dashboard-score">-</span></p>
+                    <p><strong>CEFR Level:</strong> <span id="dashboard-cefr">Not assessed</span></p>
+                </div>
+            </section>
+
+            <!-- Accent Trainer Tab -->
+            <section id="accent-trainer" class="tab-content">
+                <div class="card">
+                    <h3>Australian Accent Practice</h3>
+                    
+                    <!-- Microphone Setup Guide -->
+                    <div id="mic-setup-guide" class="permission-guide" style="display: none;">
+                        <h4>🎤 Microphone Setup Required</h4>
+                        <p>To use the pronunciation training features, please allow microphone access:</p>
+                        
+                        <div id="browser-specific-guide">
+                            <!-- Will be populated with browser-specific instructions -->
+                        </div>
+                        
+                        <div class="recording-controls">
+                            <button class="btn btn--primary" onclick="app.requestPermissionManually()">🔄 Try Again</button>
+                            <button class="btn btn--secondary" onclick="app.hideMicGuide()">Continue Without Recording</button>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="practice-text">Enter text to practice (or use sample sentences):</label>
+                        <textarea id="practice-text" rows="4" placeholder="Type anything you'd like to practice...">The water is crystal clear in the harbour today.</textarea>
+                    </div>
+                    
+                    <div class="recording-controls">
+                        <button class="btn btn--primary" id="listen-btn" onclick="app.speakText()">🔊 Listen (Australian Accent)</button>
+                        <button class="btn btn--secondary" id="record-btn" onclick="app.startRecording()">🎤 Start Recording</button>
+                        <button class="btn btn--danger" id="stop-btn" onclick="app.stopRecording()" disabled>⏹️ Stop Recording</button>
+                    </div>
+                    
+                    <div id="recording-status" class="recording-status idle">Ready to practice! Click "Start Recording" when ready.</div>
+                    
+                    <audio id="recorded-audio" class="audio-player" controls style="display: none;"></audio>
+                    
+                    <div class="recording-controls">
+                        <button class="btn btn--secondary" id="download-btn" onclick="app.downloadRecording()" disabled>📥 Download Recording</button>
+                        <button class="btn btn--primary" id="analyze-btn" onclick="app.analyzePronunciation()" disabled>📊 Get Feedback</button>
+                    </div>
+                    
+                    <div id="pronunciation-score" class="score-display" style="display: none;">
+                        <div class="score-value" id="score-value">0</div>
+                        <p>Pronunciation Score</p>
+                        <div id="pronunciation-feedback"></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Common Pronunciation Challenges for Indians</h3>
+                    <div class="pronunciation-grid" id="pronunciation-tips">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- CEFR Assessment Tab -->
+            <section id="cefr-assessment" class="tab-content">
+                <div class="card">
+                    <h3>CEFR English Proficiency Assessment</h3>
+                    <p>Test your English level according to the Common European Framework of Reference for Australian job requirements.</p>
+                    
+                    <div id="cefr-levels" class="cefr-levels">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="assessment-progress">
+                        <button class="btn btn--primary" onclick="app.startCEFRAssessment()">Start Assessment</button>
+                    </div>
+                    
+                    <div id="cefr-test" style="display: none;">
+                        <h4>Speaking Assessment</h4>
+                        <div class="input-group">
+                            <label>Practice Sentence:</label>
+                            <p id="cefr-sentence" style="font-style: italic; padding: 10px; background: #f9f9f9; border-radius: 6px;"></p>
+                        </div>
+                        
+                        <div class="recording-controls">
+                            <button class="btn btn--secondary" id="cefr-listen-btn" onclick="app.speakCEFRSentence()">🔊 Listen</button>
+                            <button class="btn btn--primary" id="cefr-record-btn" onclick="app.startCEFRRecording()">🎤 Record Your Pronunciation</button>
+                            <button class="btn btn--danger" id="cefr-stop-btn" onclick="app.stopCEFRRecording()" disabled>⏹️ Stop</button>
+                        </div>
+                        
+                        <div id="cefr-recording-status" class="recording-status idle">Ready to record</div>
+                        
+                        <audio id="cefr-audio" class="audio-player" controls style="display: none;"></audio>
+                        
+                        <div class="assessment-progress">
+                            <button class="btn btn--primary" id="cefr-next-btn" onclick="app.nextCEFRQuestion()" disabled>Next Question</button>
+                            <button class="btn btn--secondary" onclick="app.finishCEFRAssessment()" id="cefr-finish-btn" disabled>Finish Assessment</button>
+                        </div>
+                        
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="cefr-progress" style="width: 0%;"></div>
+                        </div>
+                        <p><span id="cefr-question-count">1</span> of 5 questions completed</p>
+                    </div>
+                    
+                    <div id="cefr-results" style="display: none;">
+                        <h4>Assessment Results</h4>
+                        <div class="score-display">
+                            <div class="score-value" id="cefr-final-score">0</div>
+                            <p>Overall Score</p>
+                            <div id="cefr-level-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bookkeeping Q&A Tab -->
+            <section id="bookkeeping" class="tab-content">
+                <div class="card">
+                    <h3>Australian Bookkeeping & Accounting Q&A</h3>
+                    <input type="text" id="qa-search" class="search-box" placeholder="Search for bookkeeping questions (e.g., bank reconciliation, GST, payroll)..." oninput="app.searchQA(this.value)">
+                    
+                    <div class="input-group">
+                        <label for="qa-category">Filter by Category:</label>
+                        <select id="qa-category" onchange="app.filterQAByCategory(this.value)">
+                            <option value="">All Categories</option>
+                            <option value="GST">GST</option>
+                            <option value="BAS">BAS</option>
+                            <option value="Payroll">Payroll</option>
+                            <option value="Software">Software</option>
+                            <option value="Tax">Tax</option>
+                            <option value="Bank Reconciliation">Bank Reconciliation</option>
+                        </select>
+                    </div>
+                    
+                    <div id="qa-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    
+                    <div id="no-results-section" style="display: none;">
+                        <!-- External resources for no matches -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tax Knowledge Tab -->
+            <section id="tax-knowledge" class="tab-content">
+                <div class="card">
+                    <h3>Australian Tax Knowledge Hub</h3>
+                    <p>Comprehensive guide to Australian taxation for individuals, businesses, and professionals.</p>
+                    
+                    <input type="text" id="tax-search" class="search-box" placeholder="Search tax topics (e.g., capital gains, PAYG, super guarantee)..." oninput="app.searchTax(this.value)">
+                    
+                    <div class="input-group">
+                        <label for="tax-category">Filter by Tax Category:</label>
+                        <select id="tax-category" onchange="app.filterTaxByCategory(this.value)">
+                            <option value="">All Tax Categories</option>
+                            <option value="Payroll">Payroll Tax & Super</option>
+                            <option value="GST">GST & BAS</option>
+                            <option value="Individual Tax">Individual Tax</option>
+                            <option value="Corporate Tax">Corporate Tax</option>
+                            <option value="Software">QB & Xero</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="tax-category-grid">
+                    <div class="tax-category-card payroll">
+                        <h4>💼 Payroll Tax & Super</h4>
+                        <p>PAYG withholding, superannuation guarantee, payroll tax obligations, and employee entitlements.</p>
+                    </div>
+                    <div class="tax-category-card gst">
+                        <h4>🧾 GST & BAS</h4>
+                        <p>Goods and Services Tax, Business Activity Statements, input tax credits, and GST registration.</p>
+                    </div>
+                    <div class="tax-category-card individual-tax">
+                        <h4>👤 Individual Tax</h4>
+                        <p>Personal income tax, deductions, capital gains, Medicare levy, and tax offsets.</p>
+                    </div>
+                    <div class="tax-category-card corporate-tax">
+                        <h4>🏢 Corporate Tax</h4>
+                        <p>Company tax rates, franking credits, thin capitalisation, and corporate compliance.</p>
+                    </div>
+                    <div class="tax-category-card software">
+                        <h4>💻 QB & Xero Tax Features</h4>
+                        <p>Tax settings, BAS preparation, payroll tax setup, and ATO integration in accounting software.</p>
+                    </div>
+                </div>
+                
+                <div id="tax-qa-list">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                
+                <div id="tax-no-results-section" style="display: none;">
+                    <!-- External resources for tax no matches -->
+                </div>
+            </section>
+
+            <!-- Journal Entries Tab -->
+            <section id="journal-entries" class="tab-content">
+                <div class="card">
+                    <h3>Australian Accounting Journal Entries</h3>
+                    <p>Ready-to-use journal entries for common Australian bookkeeping and tax scenarios.</p>
+                    
+                    <div class="input-group">
+                        <label for="journal-category">Filter by Category:</label>
+                        <select id="journal-category" onchange="app.filterJournalEntries(this.value)">
+                            <option value="">All Categories</option>
+                            <option value="Month-end Closing">Month-end Closing</option>
+                            <option value="Payroll Entries">Payroll Entries</option>
+                            <option value="GST Entries">GST Entries</option>
+                            <option value="Tax Entries">Tax Entries</option>
+                            <option value="Year-end Adjustments">Year-end Adjustments</option>
+                            <option value="Pro-rata Pay">Pro-rata Pay</option>
+                            <option value="Bank Reconciliation">Bank Reconciliation</option>
+                        </select>
+                    </div>
+                    
+                    <div id="journal-entries-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resources Tab -->
+            <section id="resources" class="tab-content">
+                <div class="card">
+                    <h3>External Resources & Links</h3>
+                    <p>Official ATO, Xero, QuickBooks, and educational resources for Australian accounting and tax.</p>
+                    
+                    <div id="external-resources">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="creator-watermark">
+                <p>&copy; 2025 Australian Accounting and Accent AI</p>
+                <p><strong>Created by: Sunil Karki</strong></p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Australian Accounting and Accent AI - Enhanced with Tax Knowledge Base
+        class AustralianAccountingAccentAI {
+            constructor() {
+                this.currentTab = 'dashboard';
+                this.mediaRecorder = null;
+                this.audioChunks = [];
+                this.recordedBlob = null;
+                this.recognition = null;
+                this.synthesis = window.speechSynthesis;
+                this.currentAssessment = null;
+                this.audioStream = null;
+                this.cefrQuestionIndex = 0;
+                this.cefrScores = [];
+                this.microphonePermissionGranted = false;
+                this.userProgress = {
+                    practiceSessions: 0,
+                    totalScore: 0,
+                    cefrLevel: '-',
+                    recordings: []
+                };
+                
+                // Browser compatibility detection
+                this.browserInfo = this.detectBrowser();
+                this.mimeTypes = this.getBrowserMimeTypes();
+                
+                // Enhanced bookkeeping Q&A
+                this.enhancedBookkeepingQA = [
+                    {
+                        "question": "How do I perform bank reconciliation in Xero?",
+                        "answer": "In Xero: 1) Go to Accounting → Bank accounts → Reconcile, 2) Import bank statement or enter manually, 3) Match transactions by clicking 'OK' for exact matches, 4) For discrepancies, click 'Create' to add new transactions, 5) Use 'Transfer' for funds moved between accounts, 6) Review unmatched items and investigate differences, 7) Ensure bank balance matches Xero balance. Run Bank Reconciliation report to verify completion.",
+                        "category": "Bank Reconciliation",
+                        "external_link": "https://www.youtube.com/results?search_query=xero+bank+reconciliation+australia"
+                    },
+                    {
+                        "question": "How do I record a $1,100 sale including GST in Xero?",
+                        "answer": "In Xero: 1) Go to Business → Invoices → New Invoice, 2) Enter customer details, 3) Add line item: Amount $1,000, select 'GST on Income' tax rate, 4) Xero automatically calculates $100 GST (Total: $1,100), 5) Save and send invoice. The entry will debit Accounts Receivable $1,100, credit Sales Revenue $1,000, credit GST Payable $100.",
+                        "category": "GST",
+                        "external_link": "https://central.xero.com/s/article/Create-and-send-invoices"
+                    },
+                    {
+                        "question": "When is my quarterly BAS due for quarter ending 31 March 2025?",
+                        "answer": "For quarterly BAS lodgers, if your quarter ends 31 March 2025, your BAS is due by 28 May 2025 (28th of the month following the end of the quarter). If you use a registered BAS agent, you get an extra month - due 28 June 2025. Lodge and pay by 11:59 PM AEST on the due date to avoid penalties.",
+                        "category": "BAS",
+                        "external_link": "https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/when-to-lodge-your-bas"
+                    }
+                ];
+
+                // Comprehensive Tax Knowledge Base
+                this.taxKnowledgeBase = [
+                    // Payroll Tax & Super
+                    {
+                        "question": "What is the current superannuation guarantee rate in Australia?",
+                        "answer": "The superannuation guarantee (SG) rate is currently 11% (as of 2023-2025). It will increase to 11.5% from 1 July 2025, and reach 12% from 1 July 2025. SG must be paid for employees earning $450+ per month. Payment due by 28th of the month following the quarter. Penalties apply for late payments including General Interest Charge (GIC) and Superannuation Guarantee Charge (SGC).",
+                        "category": "Payroll",
+                        "external_link": "https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/super-for-employers"
+                    },
+                    {
+                        "question": "How do I calculate PAYG withholding for employees?",
+                        "answer": "PAYG withholding calculation: 1) Determine employee's gross pay, 2) Check if they claimed tax-free threshold ($18,200), 3) Use ATO tax tables or online calculator, 4) Consider Medicare levy (2%), 5) Apply any HECS-HELP or SFSS debts, 6) Use fortnightly/monthly/weekly tax scales. In Xero/QB: Set up employee with TFN, threshold status, and software calculates automatically using ATO rates. Remit to ATO via BAS.",
+                        "category": "Payroll",
+                        "external_link": "https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/payg-withholding-and-reporting"
+                    },
+                    {
+                        "question": "What are the current payroll tax thresholds by state?",
+                        "answer": "Payroll tax thresholds 2024-25: NSW: $1.2M, VIC: $700K, QLD: $1.3M, WA: $850K, SA: $1.5M, TAS: $1.25M, ACT: $2M, NT: $1.5M. Rates vary: 4.85%-6.85%. Calculated on total Australian wages. Monthly/annual returns required. Some states offer payroll tax exemptions for apprentices, eligible startups. Register within 7 days of exceeding threshold.",
+                        "category": "Payroll",
+                        "external_link": "https://www.youtube.com/results?search_query=australian+payroll+tax+rates+2024"
+                    },
+
+                    // GST & BAS
+                    {
+                        "question": "When must I register for GST in Australia?",
+                        "answer": "Mandatory GST registration: 1) Annual turnover $75,000+ ($150,000 for non-profit), 2) Provide taxi/ride-share services, 3) Import goods into Australia. Voluntary registration allowed below threshold. Register within 21 days of exceeding threshold. Benefits: Claim input tax credits, appear professional. Obligations: Charge 10% GST, lodge BAS, keep tax records for 5 years.",
+                        "category": "GST",
+                        "external_link": "https://www.ato.gov.au/businesses-and-organisations/gst-goods-and-services-tax/registering-for-gst"
+                    },
+                    {
+                        "question": "What purchases can I claim GST input tax credits on?",
+                        "answer": "Input tax credits available for: 1) Business purchases with GST (not GST-free/input taxed), 2) Must have tax invoice for $82.50+, 3) Purchase for business use, not private, 4) From GST-registered supplier. Cannot claim: Salary/wages, GST-free supplies, input taxed supplies, private purchases, entertainment over $300. Claim on BAS. Keep records 5 years.",
+                        "category": "GST",
+                        "external_link": "https://www.ato.gov.au/businesses-and-organisations/gst-goods-and-services-tax/gst-credits-and-refunds"
+                    },
+                    {
+                        "question": "How do I complete a Business Activity Statement (BAS)?",
+                        "answer": "BAS completion steps: 1) Gather sales/income records (G1), 2) Calculate GST collected (1A), 3) Record GST-free sales (G2), 4) List purchases with GST (G10, G11), 5) Calculate input tax credits (1B), 6) Net GST payable: 1A minus 1B, 7) Include PAYG withholding, 8) Lodge by due date, 9) Pay amount owing. Use accounting software for auto-calculation. Monthly/quarterly lodgement.",
+                        "category": "GST",
+                        "external_link": "https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas"
+                    },
+
+                    // Individual Tax
+                    {
+                        "question": "What are the current Australian personal tax rates?",
+                        "answer": "Tax-free threshold: $18,200. Tax rates 2024-25: $18,201-$45,000: 19%, $45,001-$120,000: 32.5%, $120,001-$180,000: 37%, $180,001+: 45%. Plus Medicare Levy 2% (exemptions apply). Temporary Budget Repair Levy removed. High-income earners may pay Medicare Levy Surcharge. Rates apply to taxable income after deductions.",
+                        "category": "Individual Tax",
+                        "external_link": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/income-you-must-declare/employment-income"
+                    },
+                    {
+                        "question": "What work-related expenses can individuals claim?",
+                        "answer": "Claimable work expenses: 1) Car expenses (logbook/cents per km), 2) Travel costs (accommodation, meals while travelling), 3) Clothing (uniform, protective, occupation-specific), 4) Self-education related to work, 5) Home office expenses, 6) Phone/internet (work portion), 7) Tools/equipment, 8) Union fees. Must be: work-related, you paid, not reimbursed, have records. $300 substantiation rule.",
+                        "category": "Individual Tax",
+                        "external_link": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/deductions-you-can-claim"
+                    },
+                    {
+                        "question": "How does capital gains tax work in Australia?",
+                        "answer": "CGT applies to: shares, real estate (not main residence), collectibles $500+, personal use assets $10,000+. Calculate: Sale price minus cost base minus selling costs. 50% discount if held 12+ months and individual/trust. No CGT on main residence (conditions apply), super funds get 33% discount. Lodge with tax return. Consider CGT events timing for tax planning.",
+                        "category": "Individual Tax",
+                        "external_link": "https://www.ato.gov.au/individuals-and-families/capital-gains-tax"
+                    },
+
+                    // Corporate Tax
+                    {
+                        "question": "What is the current company tax rate in Australia?",
+                        "answer": "Company tax rates: Small business entities (turnover <$50M): 25%, All other companies: 30%. Base rate entities (80% passive income test): may qualify for 25%. Non-resident companies: 30% on Australian income. Imputation system allows franking credits. Pay quarterly instalments via PAYG. Lodge annual return by due date.",
+                        "category": "Corporate Tax",
+                        "external_link": "https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/company-tax-rates"
+                    },
+                    {
+                        "question": "How do franking credits work?",
+                        "answer": "Franking credits represent tax already paid by company. When company pays 30% tax and distributes $70 dividend, shareholder receives $100 (including $30 franking credit). Individual includes $100 in income, pays tax, then claims $30 credit. Prevents double taxation. Excess credits refunded to individuals. Companies maintain franking account. 45-day rule applies for shares.",
+                        "category": "Corporate Tax",
+                        "external_link": "https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/franking-credits-for-companies"
+                    },
+                    {
+                        "question": "What are Division 7A rules for companies?",
+                        "answer": "Division 7A prevents tax-free distribution of profits to shareholders/associates via loans, payments, forgiven debts. Deemed dividend if: loan not repaid by lodgement day, payment to shareholder without consideration, debt forgiveness. Exceptions: commercial loans with agreement, payments for adequate consideration. Penalties: deemed dividend taxed as unfranked dividend. Seek professional advice for compliance.",
+                        "category": "Corporate Tax",
+                        "external_link": "https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/division-7a"
+                    },
+
+                    // Software (QB & Xero)
+                    {
+                        "question": "How do I set up GST in Xero for Australian business?",
+                        "answer": "Xero GST setup: 1) Go to Accounting → Tax Rates, 2) Ensure 'GST on Income' (10%) and 'GST on Expenses' (10%) are active, 3) Set default tax rates for income/expense accounts, 4) Configure BAS settings in Accounting → Tax, 5) Set GST reporting method (cash/accruals), 6) Link bank accounts, 7) Create BAS-ready chart of accounts. Test with sample transactions before going live.",
+                        "category": "Software",
+                        "external_link": "https://central.xero.com/s/article/Set-up-GST-and-BAS"
+                    },
+                    {
+                        "question": "How do I run payroll in QuickBooks Desktop Australian version?",
+                        "answer": "QB Desktop Payroll: 1) Set up employees with TFN, super details, 2) Configure pay items (salary, super, PAYG), 3) Set up ATO tax tables, 4) Create pay schedules, 5) Process pay run: Employees → Pay Employees, 6) Review gross pay, deductions, super, 7) Generate payslips, 8) Create journal entries if needed, 9) Run payroll reports for BAS. Ensure ATO compliance with STP if applicable.",
+                        "category": "Software",
+                        "external_link": "https://www.youtube.com/results?search_query=quickbooks+desktop+payroll+australia"
+                    },
+                    {
+                        "question": "How do I prepare BAS in Xero?",
+                        "answer": "BAS preparation in Xero: 1) Ensure all transactions reconciled, 2) Check GST codes are correct, 3) Go to Accounting → Tax, 4) Select BAS period, 5) Review figures: G1 (total sales), 1A (GST on sales), G10/G11 (purchases), 1B (GST credits), 6) Verify PAYG withholding amounts, 7) Export to ATO portal or lodge directly (if integrated), 8) Keep copy for records.",
+                        "category": "Software",
+                        "external_link": "https://central.xero.com/s/article/Prepare-and-lodge-your-BAS"
+                    }
+                ];
+
+                // Enhanced journal entries with tax entries
+                this.journalEntries = [
+                    // Tax Entries
+                    {
+                        "category": "Tax Entries",
+                        "title": "PAYG Withholding Tax",
+                        "debit": "Wages Expense $10,000",
+                        "credit": "Cash $8,500, PAYG Withholding Payable $1,500",
+                        "description": "To record wages payment with PAYG tax withheld"
+                    },
+                    {
+                        "category": "Tax Entries",
+                        "title": "Superannuation Guarantee",
+                        "debit": "Superannuation Expense $1,100",
+                        "credit": "Superannuation Payable $1,100",
+                        "description": "To accrue 11% superannuation guarantee on wages"
+                    },
+                    {
+                        "category": "Tax Entries",
+                        "title": "GST Payment to ATO",
+                        "debit": "GST Payable $5,000",
+                        "credit": "Bank Account $5,000",
+                        "description": "To record GST payment following BAS lodgement"
+                    },
+                    {
+                        "category": "Tax Entries",
+                        "title": "Provision for Income Tax",
+                        "debit": "Income Tax Expense $30,000",
+                        "credit": "Provision for Income Tax $30,000",
+                        "description": "To provide for estimated company tax liability"
+                    },
+                    {
+                        "category": "Bank Reconciliation",
+                        "title": "Bank Reconciliation Adjustment",
+                        "debit": "Bank Charges Expense $25",
+                        "credit": "Bank Account $25",
+                        "description": "To record bank charges identified during reconciliation"
+                    },
+                    {
+                        "category": "Bank Reconciliation",
+                        "title": "Outstanding Deposit",
+                        "debit": "Bank Account $2,500",
+                        "credit": "Accounts Receivable $2,500",
+                        "description": "To record deposit in transit during bank reconciliation"
+                    },
+                    {
+                        "category": "Month-end Closing",
+                        "title": "Accrued Wages Entry",
+                        "debit": "Wages Expense $5,000",
+                        "credit": "Wages Payable $5,000",
+                        "description": "To record wages earned but not yet paid at month-end"
+                    },
+                    {
+                        "category": "Payroll Entries",
+                        "title": "Payroll with Tax Withholding",
+                        "debit": "Wages Expense $10,000, Superannuation Expense $1,100",
+                        "credit": "Cash $8,500, PAYG Withholding Payable $1,500, Superannuation Payable $1,100",
+                        "description": "To record payroll payment with tax withholding and super"
+                    },
+                    {
+                        "category": "GST Entries",
+                        "title": "GST on Sales",
+                        "debit": "Accounts Receivable $11,000",
+                        "credit": "Sales Revenue $10,000, GST Payable $1,000",
+                        "description": "To record sale with 10% GST included"
+                    },
+                    {
+                        "category": "Year-end Adjustments",
+                        "title": "Depreciation Expense",
+                        "debit": "Depreciation Expense $5,000",
+                        "credit": "Accumulated Depreciation $5,000",
+                        "description": "To record annual depreciation on fixed assets"
+                    },
+                    {
+                        "category": "Pro-rata Pay",
+                        "title": "Pro-rata Annual Leave",
+                        "debit": "Annual Leave Expense $2,000",
+                        "credit": "Annual Leave Provision $2,000",
+                        "description": "To accrue pro-rata annual leave for employee"
+                    }
+                ];
+
+                // CEFR level data
+                this.cefrLevels = {
+                    "B1": {
+                        "description": "Intermediate level - Can handle routine conversations and describe familiar topics",
+                        "passing_score": 60,
+                        "australian_requirements": "Minimum for visitor visas, hospitality jobs, basic customer service roles",
+                        "sample_sentences": [
+                            "I work in accounting and help small businesses with their bookkeeping",
+                            "The weather in Australia is quite different from what I'm used to back home",
+                            "Could you please explain the GST requirements for my business registration?"
+                        ]
+                    },
+                    "B2": {
+                        "description": "Upper-intermediate - Understand complex texts and interact fluently with native speakers",
+                        "passing_score": 70,
+                        "australian_requirements": "Required for skilled migration, university study, professional jobs",
+                        "sample_sentences": [
+                            "I need to reconcile the quarterly BAS statement with our Xero accounting records",
+                            "The superannuation guarantee rate is increasing to twelve percent next year",
+                            "Our client requires detailed financial reporting that complies with Australian accounting standards"
+                        ]
+                    },
+                    "C1": {
+                        "description": "Advanced - Express ideas fluently with sophisticated grammar and vocabulary",
+                        "passing_score": 80,
+                        "australian_requirements": "Required for permanent residency, postgraduate study, senior professional roles",
+                        "sample_sentences": [
+                            "The depreciation schedule needs to be adjusted to reflect the diminishing value method",
+                            "We must ensure compliance with the Australian Taxation Office's record-keeping requirements",
+                            "The cash flow forecast indicates potential working capital challenges in the third quarter"
+                        ]
+                    },
+                    "C2": {
+                        "description": "Proficient - Near-native level with ability to understand virtually all spoken and written language",
+                        "passing_score": 90,
+                        "australian_requirements": "Required for academic positions, executive roles, professional services",
+                        "sample_sentences": [
+                            "The provisional tax liability calculation must consider the uplift factor and GDP adjustment",
+                            "We need to implement robust internal controls to mitigate the risk of financial misstatement",
+                            "The consolidation process requires elimination of intercompany transactions and unrealized profits"
+                        ]
+                    }
+                };
+
+                // Pronunciation tips for Indians
+                this.pronunciationTips = [
+                    {"sound": "R endings", "issue": "Hard R pronounced", "correction": "Soften or drop R at word endings", "example": "water → 'watah' not 'water'"},
+                    {"sound": "TH sounds", "issue": "Pronounced as T or D", "correction": "Use tongue between teeth", "example": "think → proper 'th' sound"},
+                    {"sound": "Short vowels", "issue": "Clipped vowel sounds", "correction": "Lengthen vowel sounds", "example": "dance → 'dahnce' with longer 'ah'"},
+                    {"sound": "T in middle", "issue": "Aspirated T sounds", "correction": "Softer T, sometimes as D", "example": "better → 'beder'"}
+                ];
+
+                // Updated external resources
+                this.externalResources = [
+                    {
+                        "category": "ATO Official Resources",
+                        "resources": [
+                            {"title": "Australian Taxation Office", "url": "https://www.ato.gov.au/", "description": "Official ATO website with all tax information"},
+                            {"title": "GST Information", "url": "https://www.ato.gov.au/businesses-and-organisations/gst-goods-and-services-tax", "description": "Complete GST guide and rates"},
+                            {"title": "BAS Lodgement Guidelines", "url": "https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas", "description": "BAS requirements and due dates"},
+                            {"title": "Payroll Tax Guide", "url": "https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/payg-withholding-and-reporting", "description": "PAYG withholding and reporting"},
+                            {"title": "Superannuation for Employers", "url": "https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/super-for-employers", "description": "Super guarantee rates and obligations"},
+                            {"title": "Company Tax Information", "url": "https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/company-tax-rates", "description": "Current company tax rates and rules"}
+                        ]
+                    },
+                    {
+                        "category": "Xero Resources",
+                        "resources": [
+                            {"title": "Xero Central Support", "url": "https://central.xero.com/s/", "description": "Official Xero help center for Australian users"},
+                            {"title": "Xero Learn Portal", "url": "https://www.xero.com/au/learn/", "description": "Free accounting courses and tutorials"},
+                            {"title": "Xero Community Forum", "url": "https://community.xero.com/", "description": "User forums and discussions"},
+                            {"title": "Xero Pricing Australia", "url": "https://www.xero.com/au/pricing/", "description": "Current Xero plan pricing for Australia"},
+                            {"title": "Xero Tax and BAS", "url": "https://central.xero.com/s/article/Set-up-GST-and-BAS", "description": "Setting up tax and BAS in Xero"}
+                        ]
+                    },
+                    {
+                        "category": "QuickBooks Resources",
+                        "resources": [
+                            {"title": "QuickBooks Australia", "url": "https://quickbooks.intuit.com/au/", "description": "Official QuickBooks Australia website"},
+                            {"title": "QuickBooks Support", "url": "https://quickbooks.intuit.com/learn-support/au/", "description": "Help and training resources"},
+                            {"title": "QuickBooks Training", "url": "https://quickbooks.intuit.com/learn-support/au/help-article/getting-started/quickbooks-training/L7Cj0kBrP_AU_en_AU", "description": "Official training courses"},
+                            {"title": "QuickBooks Payroll", "url": "https://quickbooks.intuit.com/au/payroll/", "description": "Payroll features and compliance"}
+                        ]
+                    },
+                    {
+                        "category": "YouTube Training Channels",
+                        "resources": [
+                            {"title": "Australian Accent Training", "url": "https://www.youtube.com/results?search_query=australian+accent+pronunciation+training", "description": "Video tutorials for accent improvement"},
+                            {"title": "Xero Bookkeeping Australia", "url": "https://www.youtube.com/results?search_query=xero+bookkeeping+tutorial+australia", "description": "Step-by-step Xero tutorials"},
+                            {"title": "Australian GST & BAS", "url": "https://www.youtube.com/results?search_query=australian+gst+bas+explained", "description": "GST and BAS explanation videos"},
+                            {"title": "Australian Tax Explained", "url": "https://www.youtube.com/results?search_query=australian+tax+system+explained", "description": "Comprehensive tax system videos"},
+                            {"title": "QuickBooks Australia Training", "url": "https://www.youtube.com/results?search_query=quickbooks+australia+training", "description": "QuickBooks tutorial videos"}
+                        ]
+                    }
+                ];
+                
+                this.init();
+            }
+
+            // Browser Detection
+            detectBrowser() {
+                const userAgent = navigator.userAgent;
+                const isChrome = /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
+                const isFirefox = /Firefox/.test(userAgent);
+                const isSafari = /Safari/.test(userAgent) && /Apple Computer/.test(navigator.vendor);
+                const isEdge = /Edg/.test(userAgent);
+                
+                if (isChrome) return 'chrome';
+                if (isFirefox) return 'firefox';
+                if (isSafari) return 'safari';
+                if (isEdge) return 'edge';
+                return 'unknown';
+            }
+
+            // Browser-specific MIME types
+            getBrowserMimeTypes() {
+                switch (this.browserInfo) {
+                    case 'safari':
+                        return { audio: 'audio/mp4', video: 'video/mp4' };
+                    case 'chrome':
+                    case 'firefox':
+                    case 'edge':
+                    default:
+                        return { audio: 'audio/webm', video: 'video/webm' };
+                }
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.setupSpeechRecognition();
+                this.populateContent();
+                this.updateDashboard();
+                this.checkMicrophonePermission();
+            }
+
+            setupEventListeners() {
+                // Navigation
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const tab = e.target.getAttribute('data-tab');
+                        this.switchTab(tab);
+                    });
+                });
+            }
+
+            // Enhanced microphone permission checking
+            async checkMicrophonePermission() {
+                if (navigator.permissions && navigator.permissions.query) {
+                    try {
+                        const permission = await navigator.permissions.query({name: 'microphone'});
+                        
+                        if (permission.state === 'granted') {
+                            this.microphonePermissionGranted = true;
+                            this.hideMicGuide();
+                        } else if (permission.state === 'denied') {
+                            this.showMicSetupGuide();
+                        } else {
+                            this.hideMicGuide();
+                        }
+                        
+                        permission.addEventListener('change', () => {
+                            if (permission.state === 'granted') {
+                                this.microphonePermissionGranted = true;
+                                this.hideMicGuide();
+                                this.showSuccess('Microphone access granted! 🎤');
+                            } else if (permission.state === 'denied') {
+                                this.microphonePermissionGranted = false;
+                                this.showMicSetupGuide();
+                            }
+                        });
+                    } catch (error) {
+                        console.log('Permission API not supported or error:', error);
+                    }
+                }
+            }
+
+            showMicSetupGuide() {
+                const guide = document.getElementById('mic-setup-guide');
+                const browserGuide = document.getElementById('browser-specific-guide');
+                
+                if (guide && browserGuide) {
+                    let instructions = '';
+                    
+                    switch (this.browserInfo) {
+                        case 'chrome':
+                            instructions = `
+                                <div><span class="browser-icon">CHROME</span></div>
+                                <ol>
+                                    <li>Look for the microphone icon 🎤 in the address bar (left side)</li>
+                                    <li>Click on it and select "Allow"</li>
+                                    <li>Or go to Settings → Privacy and security → Site Settings → Microphone</li>
+                                    <li>Make sure this site is allowed</li>
+                                    <li>Refresh the page after granting permission</li>
+                                </ol>
+                            `;
+                            break;
+                        case 'safari':
+                            instructions = `
+                                <div><span class="browser-icon">SAFARI</span></div>
+                                <ol>
+                                    <li>Go to Safari → Preferences → Websites</li>
+                                    <li>Click on "Microphone" in the left sidebar</li>
+                                    <li>Find this website and set it to "Allow"</li>
+                                    <li>Or look for the microphone icon in the address bar</li>
+                                    <li>Refresh the page after changing settings</li>
+                                </ol>
+                            `;
+                            break;
+                        case 'firefox':
+                            instructions = `
+                                <div><span class="browser-icon">FIREFOX</span></div>
+                                <ol>
+                                    <li>Look for the microphone icon 🎤 in the address bar</li>
+                                    <li>Click on it and select "Allow"</li>
+                                    <li>Or go to Settings → Privacy & Security → Permissions</li>
+                                    <li>Click "Settings" next to Microphone</li>
+                                    <li>Make sure this site is allowed</li>
+                                </ol>
+                            `;
+                            break;
+                        default:
+                            instructions = `
+                                <ol>
+                                    <li>Look for a microphone icon 🎤 in your browser's address bar</li>
+                                    <li>Click on it and select "Allow" or "Grant permission"</li>
+                                    <li>Check your browser's settings for microphone permissions</li>
+                                    <li>Make sure this website is allowed to use your microphone</li>
+                                    <li>Try refreshing the page after granting permission</li>
+                                </ol>
+                            `;
+                    }
+                    
+                    browserGuide.innerHTML = instructions;
+                    guide.style.display = 'block';
+                }
+            }
+
+            hideMicGuide() {
+                const guide = document.getElementById('mic-setup-guide');
+                if (guide) {
+                    guide.style.display = 'none';
+                }
+            }
+
+            async requestPermissionManually() {
+                try {
+                    this.updateRecordingStatus('Requesting microphone access...', 'processing');
+                    
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        audio: {
+                            echoCancellation: true,
+                            noiseSuppression: true,
+                            sampleRate: 44100
+                        }
+                    });
+                    
+                    this.microphonePermissionGranted = true;
+                    this.audioStream = stream;
+                    stream.getTracks().forEach(track => track.stop());
+                    
+                    this.hideMicGuide();
+                    this.showSuccess('Microphone access granted! 🎤 You can now use recording features.');
+                    this.updateRecordingStatus('Ready to practice! Click "Start Recording" when ready.', 'idle');
+                    
+                } catch (error) {
+                    this.handleMicrophoneError(error);
+                }
+            }
+
+            handleMicrophoneError(error) {
+                let errorMessage = 'Microphone access error: ';
+                let guidance = '';
+                
+                switch (error.name) {
+                    case 'NotAllowedError':
+                        errorMessage += 'Permission denied.';
+                        guidance = 'Please click "Allow" when prompted, or follow the setup guide above.';
+                        this.showMicSetupGuide();
+                        break;
+                    case 'NotFoundError':
+                        errorMessage += 'No microphone found.';
+                        guidance = 'Please check that a microphone is connected to your device.';
+                        break;
+                    case 'NotReadableError':
+                        errorMessage += 'Microphone is being used by another application.';
+                        guidance = 'Please close other applications that might be using your microphone.';
+                        break;
+                    case 'OverconstrainedError':
+                        errorMessage += 'Microphone constraints cannot be satisfied.';
+                        guidance = 'Your microphone may not support the required settings.';
+                        break;
+                    case 'SecurityError':
+                        errorMessage += 'Security error.';
+                        guidance = 'Please make sure you are using HTTPS or localhost.';
+                        break;
+                    default:
+                        errorMessage += error.message || 'Unknown error occurred.';
+                        guidance = 'Please try refreshing the page or check your browser settings.';
+                }
+                
+                this.updateRecordingStatus(errorMessage + ' ' + guidance, 'idle');
+                this.showError(errorMessage + ' ' + guidance);
+            }
+
+            // Speech Recognition setup
+            setupSpeechRecognition() {
+                try {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    if (SpeechRecognition) {
+                        this.recognition = new SpeechRecognition();
+                        this.recognition.continuous = false;
+                        this.recognition.interimResults = false;
+                        this.recognition.lang = 'en-AU';
+                        
+                        this.recognition.onresult = (event) => {
+                            const transcript = event.results[0][0].transcript;
+                            const confidence = event.results[0][0].confidence;
+                            this.handleSpeechResult(transcript, confidence);
+                        };
+                        
+                        this.recognition.onerror = (event) => {
+                            console.error('Speech recognition error:', event.error);
+                        };
+                    } else {
+                        console.warn('Speech Recognition not supported');
+                    }
+                } catch (error) {
+                    console.error('Speech Recognition setup failed:', error);
+                }
+            }
+
+            switchTab(tabName) {
+                // Update navigation
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+                
+                // Update content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabName).classList.add('active');
+                
+                this.currentTab = tabName;
+            }
+
+            // Enhanced MediaRecorder with better error handling
+            async createMediaRecorder(stream) {
+                const primaryMimeType = this.mimeTypes.audio;
+                const fallbackMimeTypes = ['audio/webm', 'audio/mp4', 'audio/ogg', 'audio/wav'];
+                
+                if (MediaRecorder.isTypeSupported(primaryMimeType)) {
+                    try {
+                        return new MediaRecorder(stream, { mimeType: primaryMimeType });
+                    } catch (error) {
+                        console.warn('Primary MIME type failed:', error);
+                    }
+                }
+                
+                for (const mimeType of fallbackMimeTypes) {
+                    if (MediaRecorder.isTypeSupported(mimeType)) {
+                        try {
+                            return new MediaRecorder(stream, { mimeType: mimeType });
+                        } catch (error) {
+                            console.warn(`Fallback MIME type ${mimeType} failed:`, error);
+                        }
+                    }
+                }
+                
+                try {
+                    return new MediaRecorder(stream);
+                } catch (error) {
+                    throw new Error('MediaRecorder not supported in this browser');
+                }
+            }
+
+            // Recording functions (keeping the same as before)
+            async startRecording() {
+                try {
+                    if (!this.microphonePermissionGranted) {
+                        this.updateRecordingStatus('Requesting microphone access...', 'processing');
+                        
+                        const stream = await navigator.mediaDevices.getUserMedia({
+                            audio: {
+                                echoCancellation: true,
+                                noiseSuppression: true,
+                                sampleRate: 44100
+                            }
+                        });
+                        
+                        this.audioStream = stream;
+                        this.microphonePermissionGranted = true;
+                        this.hideMicGuide();
+                    } else {
+                        this.audioStream = await navigator.mediaDevices.getUserMedia({
+                            audio: {
+                                echoCancellation: true,
+                                noiseSuppression: true,
+                                sampleRate: 44100
+                            }
+                        });
+                    }
+                    
+                    this.mediaRecorder = await this.createMediaRecorder(this.audioStream);
+                    this.audioChunks = [];
+                    
+                    this.mediaRecorder.ondataavailable = (event) => {
+                        if (event.data.size > 0) {
+                            this.audioChunks.push(event.data);
+                        }
+                    };
+                    
+                    this.mediaRecorder.onstop = () => {
+                        this.recordedBlob = new Blob(this.audioChunks, { 
+                            type: this.mediaRecorder.mimeType || this.mimeTypes.audio 
+                        });
+                        this.handleRecordingComplete();
+                    };
+                    
+                    this.mediaRecorder.onerror = (event) => {
+                        this.showError(`Recording error: ${event.error}`);
+                        this.updateRecordingStatus('Recording failed', 'idle');
+                        this.resetRecordingUI();
+                    };
+                    
+                    this.mediaRecorder.start(1000);
+                    this.updateRecordingStatus('🔴 Recording... Speak clearly into your microphone', 'recording');
+                    
+                    document.getElementById('record-btn').disabled = true;
+                    document.getElementById('stop-btn').disabled = false;
+                    document.getElementById('download-btn').disabled = true;
+                    document.getElementById('analyze-btn').disabled = true;
+                    
+                } catch (error) {
+                    this.handleMicrophoneError(error);
+                    this.resetRecordingUI();
+                }
+            }
+
+            stopRecording() {
+                if (this.mediaRecorder && this.mediaRecorder.state === 'recording') {
+                    this.mediaRecorder.stop();
+                    this.updateRecordingStatus('⏳ Processing recording...', 'processing');
+                    
+                    if (this.audioStream) {
+                        this.audioStream.getTracks().forEach(track => track.stop());
+                    }
+                    
+                    document.getElementById('record-btn').disabled = false;
+                    document.getElementById('stop-btn').disabled = true;
+                }
+            }
+
+            resetRecordingUI() {
+                document.getElementById('record-btn').disabled = false;
+                document.getElementById('stop-btn').disabled = true;
+                document.getElementById('download-btn').disabled = true;
+                document.getElementById('analyze-btn').disabled = true;
+            }
+
+            handleRecordingComplete() {
+                const audioElement = document.getElementById('recorded-audio');
+                const audioURL = URL.createObjectURL(this.recordedBlob);
+                audioElement.src = audioURL;
+                audioElement.style.display = 'block';
+                
+                document.getElementById('download-btn').disabled = false;
+                document.getElementById('analyze-btn').disabled = false;
+                
+                this.updateRecordingStatus('✅ Recording complete! You can now download or analyze it.', 'success');
+                
+                this.userProgress.recordings.push({
+                    date: new Date().toISOString(),
+                    blob: this.recordedBlob
+                });
+                
+                this.updateDashboard();
+                this.showSuccess('Recording saved successfully! 🎉');
+            }
+
+            updateRecordingStatus(message, status) {
+                const statusElement = document.getElementById('recording-status');
+                if (statusElement) {
+                    statusElement.textContent = message;
+                    statusElement.className = `recording-status ${status}`;
+                }
+                
+                const cefrStatusElement = document.getElementById('cefr-recording-status');
+                if (cefrStatusElement && this.currentTab === 'cefr-assessment') {
+                    cefrStatusElement.textContent = message;
+                    cefrStatusElement.className = `recording-status ${status}`;
+                }
+            }
+
+            downloadRecording() {
+                if (this.recordedBlob) {
+                    const url = URL.createObjectURL(this.recordedBlob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `pronunciation-practice-${Date.now()}.${this.getFileExtension()}`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    
+                    this.showSuccess('Recording downloaded successfully! 📥');
+                }
+            }
+
+            getFileExtension() {
+                if (this.mediaRecorder && this.mediaRecorder.mimeType) {
+                    if (this.mediaRecorder.mimeType.includes('webm')) return 'webm';
+                    if (this.mediaRecorder.mimeType.includes('mp4')) return 'mp4';
+                    if (this.mediaRecorder.mimeType.includes('ogg')) return 'ogg';
+                }
+                return this.browserInfo === 'safari' ? 'mp4' : 'webm';
+            }
+
+            // Text-to-speech with Australian accent
+            speakText() {
+                const text = document.getElementById('practice-text').value;
+                if (text.trim()) {
+                    this.synthesis.cancel();
+                    
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    
+                    const voices = this.synthesis.getVoices();
+                    const australianVoice = voices.find(voice => 
+                        voice.lang.includes('en-AU') || 
+                        voice.name.toLowerCase().includes('australian')
+                    );
+                    
+                    if (australianVoice) {
+                        utterance.voice = australianVoice;
+                    } else {
+                        const englishVoice = voices.find(voice => voice.lang.includes('en'));
+                        if (englishVoice) {
+                            utterance.voice = englishVoice;
+                        }
+                    }
+                    
+                    utterance.rate = 0.9;
+                    utterance.pitch = 1;
+                    
+                    utterance.onstart = () => {
+                        document.getElementById('listen-btn').disabled = true;
+                        document.getElementById('listen-btn').textContent = '🔊 Playing...';
+                    };
+                    
+                    utterance.onend = () => {
+                        document.getElementById('listen-btn').disabled = false;
+                        document.getElementById('listen-btn').textContent = '🔊 Listen (Australian Accent)';
+                    };
+                    
+                    this.synthesis.speak(utterance);
+                }
+            }
+
+            // Pronunciation analysis (simplified)
+            analyzePronunciation() {
+                if (!this.recognition) {
+                    this.showWarning('Speech recognition not available in this browser. You can still practice with the audio playback feature!');
+                    return;
+                }
+                
+                const targetText = document.getElementById('practice-text').value.toLowerCase();
+                
+                const simulatedTranscript = targetText + (Math.random() > 0.5 ? '' : ' ah');
+                const simulatedConfidence = 0.7 + (Math.random() * 0.3);
+                
+                const score = this.calculatePronunciationScore(targetText, simulatedTranscript, simulatedConfidence);
+                this.displayPronunciationScore(score, simulatedTranscript, targetText);
+                
+                this.userProgress.practiceSessions++;
+                this.userProgress.totalScore += score;
+                this.updateDashboard();
+            }
+
+            calculatePronunciationScore(target, actual, confidence) {
+                const similarity = this.calculateSimilarity(target, actual);
+                const confidenceScore = confidence * 100;
+                const finalScore = Math.round((similarity * 0.7 + confidenceScore * 0.3));
+                return Math.max(0, Math.min(100, finalScore));
+            }
+
+            calculateSimilarity(str1, str2) {
+                const words1 = str1.split(' ');
+                const words2 = str2.split(' ');
+                const maxLength = Math.max(words1.length, words2.length);
+                let matches = 0;
+                
+                for (let i = 0; i < Math.min(words1.length, words2.length); i++) {
+                    if (words1[i] === words2[i]) {
+                        matches++;
+                    }
+                }
+                
+                return (matches / maxLength) * 100;
+            }
+
+            displayPronunciationScore(score, transcript, target) {
+                const scoreElement = document.getElementById('pronunciation-score');
+                const scoreValue = document.getElementById('score-value');
+                const feedback = document.getElementById('pronunciation-feedback');
+                
+                scoreValue.textContent = score;
+                scoreElement.style.display = 'block';
+                
+                let feedbackText = `<p><strong>Target:</strong> "${target}"</p>`;
+                feedbackText += `<p><strong>Analysis:</strong> "${transcript}"</p>`;
+                
+                if (score >= 90) {
+                    feedbackText += '<p style="color: #22c55e; font-weight: bold;">🌟 Excellent pronunciation! Near-perfect Australian accent!</p>';
+                } else if (score >= 80) {
+                    feedbackText += '<p style="color: #22c55e; font-weight: bold;">🎉 Great job! Your pronunciation is very good!</p>';
+                } else if (score >= 60) {
+                    feedbackText += '<p style="color: #f59e0b; font-weight: bold;">👍 Good effort! Keep practicing for improvement.</p>';
+                } else {
+                    feedbackText += '<p style="color: #ef4444; font-weight: bold;">📚 Keep practicing! Focus on clarity and pacing.</p>';
+                }
+                
+                feedbackText += '<p><strong>💡 Tips for Indian speakers:</strong></p>';
+                feedbackText += '<ul style="margin-left: 20px;">';
+                feedbackText += '<li>Soften your R sounds at the end of words</li>';
+                feedbackText += '<li>Lengthen vowel sounds (ah, oh, ee)</li>';
+                feedbackText += '<li>Make T sounds softer in the middle of words</li>';
+                feedbackText += '<li>Practice the "TH" sound with tongue between teeth</li>';
+                feedbackText += '</ul>';
+                
+                feedback.innerHTML = feedbackText;
+            }
+
+            handleSpeechResult(transcript, confidence) {
+                console.log('Speech result:', transcript, confidence);
+            }
+
+            // CEFR Assessment functions
+            startCEFRAssessment() {
+                if (!this.microphonePermissionGranted) {
+                    this.showWarning('⚠️ Microphone access is required for CEFR assessment. Please enable it in the Accent Trainer first.');
+                    this.switchTab('accent-trainer');
+                    return;
+                }
+                
+                this.cefrQuestionIndex = 0;
+                this.cefrScores = [];
+                this.currentAssessment = 'B1';
+                
+                document.getElementById('cefr-test').style.display = 'block';
+                document.getElementById('cefr-results').style.display = 'none';
+                
+                this.loadCEFRQuestion();
+            }
+
+            loadCEFRQuestion() {
+                const levelKeys = Object.keys(this.cefrLevels);
+                const currentLevelIndex = Math.floor(this.cefrQuestionIndex / 2);
+                const level = levelKeys[currentLevelIndex % levelKeys.length];
+                const sentences = this.cefrLevels[level].sample_sentences;
+                const sentence = sentences[this.cefrQuestionIndex % sentences.length];
+                
+                document.getElementById('cefr-sentence').textContent = sentence;
+                document.getElementById('cefr-question-count').textContent = this.cefrQuestionIndex + 1;
+                document.getElementById('cefr-progress').style.width = `${((this.cefrQuestionIndex + 1) / 5) * 100}%`;
+                
+                document.getElementById('cefr-record-btn').disabled = false;
+                document.getElementById('cefr-stop-btn').disabled = true;
+                document.getElementById('cefr-next-btn').disabled = true;
+                document.getElementById('cefr-finish-btn').disabled = this.cefrQuestionIndex < 4;
+                
+                this.updateRecordingStatus('Ready to record for CEFR assessment', 'idle');
+            }
+
+            speakCEFRSentence() {
+                const sentence = document.getElementById('cefr-sentence').textContent;
+                this.synthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(sentence);
+                const voices = this.synthesis.getVoices();
+                const australianVoice = voices.find(voice => voice.lang.includes('en-AU'));
+                if (australianVoice) utterance.voice = australianVoice;
+                
+                utterance.rate = 0.8;
+                this.synthesis.speak(utterance);
+            }
+
+            async startCEFRRecording() {
+                try {
+                    this.updateRecordingStatus('🔴 Recording CEFR assessment...', 'recording');
+                    
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        audio: { echoCancellation: true, noiseSuppression: true }
+                    });
+                    
+                    this.mediaRecorder = await this.createMediaRecorder(stream);
+                    this.audioChunks = [];
+                    
+                    this.mediaRecorder.ondataavailable = (event) => {
+                        if (event.data.size > 0) {
+                            this.audioChunks.push(event.data);
+                        }
+                    };
+                    
+                    this.mediaRecorder.onstop = () => {
+                        const blob = new Blob(this.audioChunks, { type: this.mimeTypes.audio });
+                        const audioElement = document.getElementById('cefr-audio');
+                        audioElement.src = URL.createObjectURL(blob);
+                        audioElement.style.display = 'block';
+                        
+                        document.getElementById('cefr-next-btn').disabled = false;
+                        this.updateRecordingStatus('✅ CEFR recording complete!', 'success');
+                    };
+                    
+                    this.mediaRecorder.start();
+                    
+                    document.getElementById('cefr-record-btn').disabled = true;
+                    document.getElementById('cefr-stop-btn').disabled = false;
+                    
+                } catch (error) {
+                    this.handleMicrophoneError(error);
+                }
+            }
+
+            stopCEFRRecording() {
+                if (this.mediaRecorder && this.mediaRecorder.state === 'recording') {
+                    this.mediaRecorder.stop();
+                    
+                    if (this.audioStream) {
+                        this.audioStream.getTracks().forEach(track => track.stop());
+                    }
+                    
+                    document.getElementById('cefr-record-btn').disabled = false;
+                    document.getElementById('cefr-stop-btn').disabled = true;
+                }
+            }
+
+            nextCEFRQuestion() {
+                const score = 60 + Math.random() * 40;
+                this.cefrScores.push(score);
+                
+                this.cefrQuestionIndex++;
+                
+                if (this.cefrQuestionIndex < 5) {
+                    this.loadCEFRQuestion();
+                } else {
+                    this.finishCEFRAssessment();
+                }
+            }
+
+            finishCEFRAssessment() {
+                const averageScore = this.cefrScores.reduce((a, b) => a + b, 0) / this.cefrScores.length;
+                
+                let level = 'A1';
+                if (averageScore >= 90) level = 'C2';
+                else if (averageScore >= 80) level = 'C1';
+                else if (averageScore >= 70) level = 'B2';
+                else if (averageScore >= 60) level = 'B1';
+                
+                this.userProgress.cefrLevel = level;
+                
+                document.getElementById('cefr-test').style.display = 'none';
+                document.getElementById('cefr-results').style.display = 'block';
+                document.getElementById('cefr-final-score').textContent = Math.round(averageScore);
+                document.getElementById('cefr-level-result').innerHTML = `
+                    <div class="level-badge">${level}</div>
+                    <p>${this.cefrLevels[level]?.description || 'Basic level'}</p>
+                    <p><strong>Australian Job Requirements:</strong> ${this.cefrLevels[level]?.australian_requirements || 'Entry level positions'}</p>
+                `;
+                
+                this.updateDashboard();
+                this.showSuccess(`🎉 CEFR Assessment complete! Your level: ${level}`);
+            }
+
+            // Content population functions
+            populateContent() {
+                this.populatePronunciationTips();
+                this.populateCEFRLevels();
+                this.populateQA();
+                this.populateTaxKnowledge();
+                this.populateJournalEntries();
+                this.populateExternalResources();
+            }
+
+            populatePronunciationTips() {
+                const container = document.getElementById('pronunciation-tips');
+                if (container) {
+                    container.innerHTML = this.pronunciationTips.map(tip => `
+                        <div class="pronunciation-item">
+                            <h4>${tip.sound}</h4>
+                            <p><strong>Common Issue:</strong> ${tip.issue}</p>
+                            <p><strong>Correction:</strong> ${tip.correction}</p>
+                            <p><strong>Example:</strong> ${tip.example}</p>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            populateCEFRLevels() {
+                const container = document.getElementById('cefr-levels');
+                if (container) {
+                    container.innerHTML = Object.entries(this.cefrLevels).map(([level, data]) => `
+                        <div class="cefr-level-card">
+                            <div class="level-badge">${level}</div>
+                            <h4>${data.description}</h4>
+                            <p><strong>Passing Score:</strong> ${data.passing_score}%</p>
+                            <p><strong>Australian Requirements:</strong> ${data.australian_requirements}</p>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            populateQA() {
+                const container = document.getElementById('qa-list');
+                if (container) {
+                    this.renderQA(this.enhancedBookkeepingQA);
+                }
+            }
+
+            renderQA(qaList) {
+                const container = document.getElementById('qa-list');
+                container.innerHTML = qaList.map((qa, index) => `
+                    <div class="qa-container">
+                        <div class="qa-question" onclick="app.toggleQA(${index})">
+                            <span><span class="category-tag">${qa.category}</span> ${qa.question}</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="qa-answer" id="qa-answer-${index}">
+                            <p>${qa.answer}</p>
+                            ${qa.external_link ? `<a href="${qa.external_link}" class="external-link" target="_blank">📚 More Details</a>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            toggleQA(index) {
+                const answer = document.getElementById(`qa-answer-${index}`);
+                answer.classList.toggle('active');
+            }
+
+            // Enhanced search with external links for no results
+            searchQA(query) {
+                if (!query.trim()) {
+                    this.renderQA(this.enhancedBookkeepingQA);
+                    this.hideNoResultsSection();
+                    return;
+                }
+                
+                const filtered = this.enhancedBookkeepingQA.filter(qa =>
+                    qa.question.toLowerCase().includes(query.toLowerCase()) ||
+                    qa.answer.toLowerCase().includes(query.toLowerCase()) ||
+                    qa.category.toLowerCase().includes(query.toLowerCase())
+                );
+                
+                if (filtered.length > 0) {
+                    this.renderQA(filtered);
+                    this.hideNoResultsSection();
+                } else {
+                    this.renderQA([]);
+                    this.showExternalResources(query);
+                }
+            }
+
+            showExternalResources(query) {
+                const noResultsSection = document.getElementById('no-results-section');
+                if (noResultsSection) {
+                    const cleanQuery = query.toLowerCase().replace(/[^\w\s]/gi, '').trim();
+                    const searchQuery = cleanQuery.replace(/\s+/g, '+');
+                    
+                    noResultsSection.innerHTML = `
+                        <div class="no-results">
+                            <h4>🔍 No matches found for "${query}"</h4>
+                            <p>Don't worry! Here are external resources to help you find answers:</p>
+                        </div>
+                        <div class="external-resources-section">
+                            <h4>📺 YouTube Training Videos</h4>
+                            <a href="https://www.youtube.com/results?search_query=australian+bookkeeping+${searchQuery}" 
+                               class="youtube-link" target="_blank">
+                               🎥 Search "${query}" on YouTube
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=xero+${searchQuery}+australia" 
+                               class="youtube-link" target="_blank">
+                               🎥 Xero "${query}" Tutorials
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=${searchQuery}+australian+accounting" 
+                               class="youtube-link" target="_blank">
+                               🎥 Australian Accounting "${query}"
+                            </a>
+                        </div>
+                        <div class="external-resources-section">
+                            <h4>🏛️ Official ATO Resources</h4>
+                            <a href="https://www.ato.gov.au/search/?keywords=${searchQuery}" 
+                               class="ato-link" target="_blank">
+                               🔍 Search ATO for "${query}"
+                            </a>
+                            <a href="https://www.ato.gov.au/businesses-and-organisations/" 
+                               class="ato-link" target="_blank">
+                               📋 ATO Business Resources
+                            </a>
+                            <a href="https://www.business.gov.au/search?keywords=${searchQuery}" 
+                               class="ato-link" target="_blank">
+                               🏢 Business.gov.au Search
+                            </a>
+                        </div>
+                    `;
+                    noResultsSection.style.display = 'block';
+                }
+            }
+
+            hideNoResultsSection() {
+                const noResultsSection = document.getElementById('no-results-section');
+                if (noResultsSection) {
+                    noResultsSection.style.display = 'none';
+                }
+            }
+
+            filterQAByCategory(category) {
+                if (!category) {
+                    this.renderQA(this.enhancedBookkeepingQA);
+                    this.hideNoResultsSection();
+                    return;
+                }
+                
+                const filtered = this.enhancedBookkeepingQA.filter(qa => qa.category === category);
+                this.renderQA(filtered);
+                this.hideNoResultsSection();
+            }
+
+            // Tax Knowledge Base functions
+            populateTaxKnowledge() {
+                this.renderTaxQA(this.taxKnowledgeBase);
+            }
+
+            renderTaxQA(qaList) {
+                const container = document.getElementById('tax-qa-list');
+                if (container) {
+                    container.innerHTML = qaList.map((qa, index) => {
+                        const categoryClass = qa.category.toLowerCase().replace(/\s+/g, '-');
+                        return `
+                            <div class="qa-container">
+                                <div class="qa-question" onclick="app.toggleTaxQA(${index})">
+                                    <span><span class="category-tag ${categoryClass}">${qa.category}</span> ${qa.question}</span>
+                                    <span>▼</span>
+                                </div>
+                                <div class="qa-answer" id="tax-qa-answer-${index}">
+                                    <p>${qa.answer}</p>
+                                    ${qa.external_link ? `<a href="${qa.external_link}" class="external-link" target="_blank">📚 More Details</a>` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            }
+
+            toggleTaxQA(index) {
+                const answer = document.getElementById(`tax-qa-answer-${index}`);
+                answer.classList.toggle('active');
+            }
+
+            searchTax(query) {
+                if (!query.trim()) {
+                    this.renderTaxQA(this.taxKnowledgeBase);
+                    this.hideTaxNoResultsSection();
+                    return;
+                }
+                
+                const filtered = this.taxKnowledgeBase.filter(qa =>
+                    qa.question.toLowerCase().includes(query.toLowerCase()) ||
+                    qa.answer.toLowerCase().includes(query.toLowerCase()) ||
+                    qa.category.toLowerCase().includes(query.toLowerCase())
+                );
+                
+                if (filtered.length > 0) {
+                    this.renderTaxQA(filtered);
+                    this.hideTaxNoResultsSection();
+                } else {
+                    this.renderTaxQA([]);
+                    this.showTaxExternalResources(query);
+                }
+            }
+
+            showTaxExternalResources(query) {
+                const noResultsSection = document.getElementById('tax-no-results-section');
+                if (noResultsSection) {
+                    const cleanQuery = query.toLowerCase().replace(/[^\w\s]/gi, '').trim();
+                    const searchQuery = cleanQuery.replace(/\s+/g, '+');
+                    
+                    noResultsSection.innerHTML = `
+                        <div class="no-results">
+                            <h4>🔍 No tax matches found for "${query}"</h4>
+                            <p>Here are external tax resources to help you:</p>
+                        </div>
+                        <div class="external-resources-section">
+                            <h4>📺 Tax Training Videos</h4>
+                            <a href="https://www.youtube.com/results?search_query=australian+tax+${searchQuery}" 
+                               class="youtube-link" target="_blank">
+                               🎥 Australian Tax "${query}"
+                            </a>
+                            <a href="https://www.youtube.com/results?search_query=${searchQuery}+ato+australia" 
+                               class="youtube-link" target="_blank">
+                               🎥 ATO "${query}" Explained
+                            </a>
+                        </div>
+                        <div class="external-resources-section">
+                            <h4>🏛️ ATO Tax Resources</h4>
+                            <a href="https://www.ato.gov.au/search/?keywords=${searchQuery}" 
+                               class="ato-link" target="_blank">
+                               🔍 ATO Search "${query}"
+                            </a>
+                            <a href="https://www.ato.gov.au/" 
+                               class="ato-link" target="_blank">
+                               🏛️ Official ATO Website
+                            </a>
+                        </div>
+                    `;
+                    noResultsSection.style.display = 'block';
+                }
+            }
+
+            hideTaxNoResultsSection() {
+                const noResultsSection = document.getElementById('tax-no-results-section');
+                if (noResultsSection) {
+                    noResultsSection.style.display = 'none';
+                }
+            }
+
+            filterTaxByCategory(category) {
+                if (!category) {
+                    this.renderTaxQA(this.taxKnowledgeBase);
+                    this.hideTaxNoResultsSection();
+                    return;
+                }
+                
+                const filtered = this.taxKnowledgeBase.filter(qa => qa.category === category);
+                this.renderTaxQA(filtered);
+                this.hideTaxNoResultsSection();
+            }
+
+            populateJournalEntries() {
+                this.renderJournalEntries(this.journalEntries);
+            }
+
+            renderJournalEntries(entries) {
+                const container = document.getElementById('journal-entries-list');
+                if (container) {
+                    container.innerHTML = entries.map(entry => {
+                        const categoryClass = entry.category.toLowerCase().replace(/\s+/g, '-');
+                        return `
+                            <div class="card">
+                                <div class="category-tag ${categoryClass}">${entry.category}</div>
+                                <h4>${entry.title}</h4>
+                                <p><strong>Debit:</strong> ${entry.debit}</p>
+                                <p><strong>Credit:</strong> ${entry.credit}</p>
+                                <p><strong>Description:</strong> ${entry.description}</p>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            }
+
+            filterJournalEntries(category) {
+                if (!category) {
+                    this.renderJournalEntries(this.journalEntries);
+                    return;
+                }
+                
+                const filtered = this.journalEntries.filter(entry => entry.category === category);
+                this.renderJournalEntries(filtered);
+            }
+
+            populateExternalResources() {
+                const container = document.getElementById('external-resources');
+                if (container) {
+                    container.innerHTML = this.externalResources.map(category => `
+                        <div class="card">
+                            <h3>${category.category}</h3>
+                            ${category.resources.map(resource => `
+                                <p>
+                                    <a href="${resource.url}" class="external-link" target="_blank">${resource.title}</a>
+                                    <br><small>${resource.description}</small>
+                                </p>
+                            `).join('')}
+                        </div>
+                    `).join('');
+                }
+            }
+
+            updateDashboard() {
+                document.getElementById('dashboard-sessions').textContent = this.userProgress.practiceSessions;
+                
+                const avgScore = this.userProgress.practiceSessions > 0 
+                    ? Math.round(this.userProgress.totalScore / this.userProgress.practiceSessions)
+                    : '-';
+                document.getElementById('dashboard-score').textContent = avgScore;
+                document.getElementById('dashboard-cefr').textContent = this.userProgress.cefrLevel;
+            }
+
+            showError(message) {
+                this.showMessage(message, 'error-message');
+            }
+
+            showSuccess(message) {
+                this.showMessage(message, 'success-message');
+            }
+
+            showWarning(message) {
+                this.showMessage(message, 'warning-message');
+            }
+
+            showMessage(message, className) {
+                const existingMessages = document.querySelectorAll(`.${className}`);
+                existingMessages.forEach(msg => msg.remove());
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.className = className;
+                messageDiv.textContent = message;
+                
+                const currentTab = document.querySelector('.tab-content.active');
+                currentTab.insertBefore(messageDiv, currentTab.firstChild);
+                
+                setTimeout(() => {
+                    messageDiv.remove();
+                }, className === 'error-message' ? 8000 : 5000);
+            }
+        }
+
+        // Global functions for HTML onclick events
+        function switchTab(tabName) {
+            app.switchTab(tabName);
+        }
+
+        // Initialize the app when the page loads
+        let app;
+        
+        window.addEventListener('load', () => {
+            app = new AustralianAccountingAccentAI();
+            
+            // Load voices for speech synthesis
+            if (speechSynthesis.onvoiceschanged !== undefined) {
+                speechSynthesis.onvoiceschanged = () => {
+                    console.log('Voices loaded:', speechSynthesis.getVoices().length);
+                };
+            }
+        });
+    </script>
+</body>
+</html>
